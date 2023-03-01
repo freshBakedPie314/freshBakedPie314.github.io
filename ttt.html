@@ -1,0 +1,137 @@
+
+<html>
+<head>
+	<title>Tic Tac Toe</title>
+		<style>
+		body {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			margin: 0;
+		}
+
+		table {
+			margin-top: 20px;
+		}
+
+		td {
+			width: 50px;
+			height: 50px;
+			border: 1px solid black;
+			text-align: center;
+			font-size: 30px;
+			font-weight: bold;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<table>
+		<tr>
+			<td id="cell0" onclick="makeMove(0)"></td>
+			<td id="cell1" onclick="makeMove(1)"></td>
+			<td id="cell2" onclick="makeMove(2)"></td>
+		</tr>
+		<tr>
+			<td id="cell3" onclick="makeMove(3)"></td>
+			<td id="cell4" onclick="makeMove(4)"></td>
+			<td id="cell5" onclick="makeMove(5)"></td>
+		</tr>
+		<tr>
+			<td id="cell6" onclick="makeMove(6)"></td>
+			<td id="cell7" onclick="makeMove(7)"></td>
+			<td id="cell8" onclick="makeMove(8)"></td>
+		</tr>
+	</table>
+
+	<script>
+		var currentPlayer = "X";
+		var gameBoard = ["", "", "", "", "", "", "", "", ""];
+
+		function makeMove(cellIndex) {
+			if (gameBoard[cellIndex] !== "") {
+				alert("That cell is already taken.");
+				return;
+			}
+
+			document.getElementById("cell" + cellIndex).innerHTML = currentPlayer;
+			gameBoard[cellIndex] = currentPlayer;
+
+			if (checkForWin()) {
+				alert("Player " + currentPlayer + " wins!");
+				resetGame();
+				return;
+			}
+
+			if (checkForTie()) {
+				alert("The game is a tie!");
+				resetGame();
+				return;
+			}
+
+			currentPlayer = currentPlayer === "X" ? "O" : "X";
+		}
+
+		function checkForWin() {
+			// Check rows
+			if (checkForMatch(0, 1, 2) ||
+			    checkForMatch(3, 4, 5) ||
+			    checkForMatch(6, 7, 8)) {
+				return true;
+			}
+
+			// Check columns
+			if (checkForMatch(0, 3, 6) ||
+			    checkForMatch(1, 4, 7) ||
+			    checkForMatch(2, 5, 8)) {
+				return true;
+			}
+
+			// Check diagonals
+			if (checkForMatch(0, 4, 8) ||
+			    checkForMatch(2, 4, 6)) {
+				return true;
+			}
+
+			return false;
+		}
+
+		function checkForMatch(index1, index2, index3) {
+			return (gameBoard[index1] !== "" && 
+				gameBoard[index1] === gameBoard[index2] && 
+				gameBoard[index2] === gameBoard[index3]);
+		}
+
+		function checkForTie() {
+			for (var i = 0; i < gameBoard.length; i++) {
+				if (gameBoard[i] === "") {
+					return false;
+				}
+			}
+
+			return true;
+		}
+
+		function reset()
+		{
+			currentPlayer = "X";
+			gameBoard = ["", "", "", "", "", "", "", "", ""];
+			document.getElementById("cell0").innerHTML ="";
+			document.getElementById("cell1").innerHTML ="";
+			document.getElementById("cell2").innerHTML ="";
+			document.getElementById("cell3").innerHTML ="";
+			document.getElementById("cell4").innerHTML ="";
+			document.getElementById("cell5").innerHTML ="";
+			document.getElementById("cell6").innerHTML ="";
+			document.getElementById("cell7").innerHTML ="";
+			document.getElementById("cell8").innerHTML ="";
+		}
+
+	
+</script>
+<br><br>
+<button onclick  = ' reset()'>RESET</button>
+</body>
+</html>
