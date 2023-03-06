@@ -13,7 +13,8 @@ let displayData=(data) =>
 {
     // console.log(data[0].name.common);
     let id = data.id;
-    let imgUrl = "https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/" + id + ".svg";
+    // let imgUrl = "https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/" + id + ".svg";
+    let imgUrl = data.sprites.other.dream_world.front_default;
     console.log(imgUrl);
     document.getElementById("image").src = imgUrl;
 }
