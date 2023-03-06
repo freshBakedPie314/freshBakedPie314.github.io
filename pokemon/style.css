@@ -1,0 +1,13 @@
+body{
+    background: black;
+}
+
+.centered{
+    align-self: center;
+    margin-top: 50px;
+}
+
+button{
+    background-color:rgb(193, 199, 199);
+    border-radius: 6px;
+}
