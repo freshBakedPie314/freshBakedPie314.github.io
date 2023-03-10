@@ -4,20 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Page</title>
+    <title>Who's that Pokémon?</title>
     <link rel="stylesheet" href="style.css">
     <script src = "script.js"></script>
 </head>
 <body>
     
     <center>
-        <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/back/132.png" 
-        alt="Image Not Founbd"
-        id = "image">
-        <div class="centered">
-            <input type="text" id = "answer">
-            <button onclick="getUrl()">Check</button>
-        </div>
+        <font color = "#cccac4" size = 7>
+            <h1>Who's that Pokémon?</h1>
+        </font>
+        
+        <img src="pokeball.png" alt="Image Not Found" id = "gameImage" onerror="err()">
+        <br>
+        <input type="text" id = "answer" disabled>
+        <button onclick = "check()" disabled id = "check">Check</button>
+        <br>
+        <button onclick ="random()" id = "start">Start</button>
+        <button id = "getAns" onclick = "revelio()" disabled >Reveal Answer</button>
+        <font size = 5 color = "#cccac4">
+            <p id="text"></p>
+        </font>
         
     </center>
 </body>

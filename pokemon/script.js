@@ -1,22 +1,60 @@
-let getUrl = function ()
+let id = 0;
+var answer;
+let random = () =>
 {
-    let pokemon = document.getElementById("answer").value;
-    let url = "https://pokeapi.co/api/v2/pokemon/"
-    + pokemon;
+    
+    id = Math.floor(Math.random() * 650);
+    let imgUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/" +id + ".svg";
+    document.getElementById("gameImage").src = imgUrl;
 
-let response = fetch(url)
-.then( response => response.json())
-.then(data => {displayData(data)});
+    let url = "https://pokeapi.co/api/v2/pokemon/" + id;
+    fetch(url)
+    .then(response => response.json())
+    .then(data => {displayData(data)});
+    
 
+    document.getElementById("text").textContent = "";
+    document.getElementById("start").innerText = "Next";
+    document.getElementById("getAns").disabled = false;
+    document.getElementById("check").disabled = false;
+    document.getElementById("answer").disabled = false;
+    document.getElementById("answer").value = "";
+   
+}
 
 let displayData=(data) =>
 {
-    // console.log(data[0].name.common);
-    let id = data.id;
-    // let imgUrl = "https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/" + id + ".svg";
-    let imgUrl = data.sprites.other.dream_world.front_default;
-    console.log(imgUrl);
-    document.getElementById("image").src = imgUrl;
-}
+    answer = capitaliseFirstLetter(data.forms[0].name);
 }
 
+let err = () =>
+{
+    let imgUrl = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/" +id + ".svg";
+    document.getElementById("gameImage").src = imgUrl;
+}
+
+check = () =>
+{
+    var playerAnwer =  document.getElementById("answer").value;
+    if(playerAnwer.toLowerCase() == answer.toLowerCase())
+    {
+        document.getElementById("text").textContent = "Correct!! It's " + answer;
+    }else
+    {
+        document.getElementById("text").textContent = "Incorrect..try again or Reveal Answer";
+        document.getElementById("getAns").disabled = false;
+    }
+}
+
+revelio = () =>
+{
+    document.getElementById("text").textContent = "It's " + answer + "!!";
+    document.getElementById("check").disabled = true;
+    document.getElementById("answer").disabled = true;
+}
+
+capitaliseFirstLetter = (s) =>
+{
+    var s1 = s.replace(s.charAt(0) , s.charAt(0).toUpperCase());
+    return s1;
+}
