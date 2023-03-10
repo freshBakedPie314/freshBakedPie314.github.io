@@ -1,6 +1,6 @@
 let id = 0;
 var answer;
-let random = () =>
+random = () =>
 {
     
     id = Math.floor(Math.random() * 650);
