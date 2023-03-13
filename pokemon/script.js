@@ -2,7 +2,7 @@ let id = 0;
 var answer;
 var score =0;
 var count = 1;
-var maxTurns =5;
+var maxTurns = 10;
 var done = false;
 var restart = false;
 function random()
@@ -34,7 +34,6 @@ function random()
         document.getElementById("start").innerText = "See Score";
         done=true;
       }
-      console.log(count);
     }
     else{
       document.getElementById("score").innerHTML = "";
@@ -57,7 +56,6 @@ function random()
 let displayData=(data) =>
 {
   answer = capitaliseFirstLetter(data.forms[0].name);
-  console.log(answer);
 }
 
 
