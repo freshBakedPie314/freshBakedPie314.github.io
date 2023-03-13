@@ -6,16 +6,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Who's that Pokémon?</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@500&display=swap" rel="stylesheet">
     <script src = "script.js"></script>
 </head>
 <body>
     
     <center>
-        <font color = "#cccac4" size = 7>
+        <font color = "#eef531" size = 7 id = "title">
             <h1>Who's that Pokémon?</h1>
         </font>
         
-        <img src="pokeball.png" alt="Image Not Found" id = "gameImage" onerror="err()">
+        <div id="score">
+            <font color = "#cccac4" size = 7>
+                Score : 0 / 10
+            </font>
+        </div>
+
+        <div id="imageContainer" class = "container">
+            <img src="pokeball.png" alt="Image Not Found" id = "gameImage" onerror="err()" class = "stretchy">
+        </div>
         <br>
         <input type="text" id = "answer" disabled>
         <button onclick = "check()" disabled id = "check">Check</button>
@@ -24,7 +33,7 @@
         <button id = "getAns" onclick = "revelio()" disabled >Reveal Answer</button>
         <font size = 5 color = "#cccac4">
             <p id="text"></p>
-        </font>
+        </font> 
         
     </center>
 </body>
